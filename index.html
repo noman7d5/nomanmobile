@@ -8,7 +8,7 @@
 
     <title>Noman Mobile</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 
     <style>
@@ -28,6 +28,7 @@
             overflow: hidden;
 
         }
+
 
 
         /* BACKGROUND */
@@ -66,6 +67,7 @@
         }
 
 
+
         /* MAIN */
 
         .container {
@@ -86,6 +88,7 @@
         }
 
 
+
         @keyframes fade {
 
             from {
@@ -99,6 +102,7 @@
             }
 
         }
+
 
 
         /* LOGO */
@@ -129,8 +133,6 @@
         }
 
 
-
-        /* TEXT */
 
         h1 {
 
@@ -178,14 +180,12 @@
             height: 90px;
 
             background: white;
-
             border-radius: 18px;
 
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             flex-direction: column;
-
 
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, .08);
@@ -208,7 +208,6 @@
             color: #777;
 
         }
-
 
 
         .date {
@@ -255,7 +254,6 @@
 
         /* OPEN PAGE */
 
-
         .services {
 
             display: flex;
@@ -280,8 +278,6 @@
             box-shadow:
                 0 10px 30px rgba(0, 0, 0, .08);
 
-            font-size: 15px;
-
         }
 
 
@@ -299,6 +295,148 @@
             margin-left: 10px;
 
         }
+
+
+
+        /* CELEBRATION */
+
+
+        .celebrate {
+
+            animation: celebrateIn 1.5s ease;
+
+        }
+
+
+        @keyframes celebrateIn {
+
+            0% {
+                opacity: 0;
+                transform: scale(.5);
+            }
+
+            70% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+
+        .balloon {
+
+            position: fixed;
+
+            bottom: -100px;
+
+            width: 35px;
+            height: 45px;
+
+            border-radius: 50%;
+
+            z-index: 999;
+
+            animation: fly 5s linear forwards;
+
+        }
+
+
+        .balloon:after {
+
+            content: "";
+
+            position: absolute;
+
+            height: 35px;
+            width: 2px;
+
+            background: #555;
+
+            bottom: -35px;
+
+            left: 50%;
+
+        }
+
+
+
+        @keyframes fly {
+
+            to {
+
+                transform:
+                    translateY(-120vh) rotate(360deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+
+        .confetti {
+
+            position: fixed;
+
+            top: -20px;
+
+            width: 10px;
+            height: 20px;
+
+            z-index: 999;
+
+            animation: drop 4s linear forwards;
+
+        }
+
+
+
+        @keyframes drop {
+
+            to {
+
+                transform:
+                    translateY(110vh) rotate(720deg);
+
+            }
+
+        }
+
+
+
+        .flash {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #c79b30;
+
+            z-index: 998;
+
+            animation: flash .8s;
+
+        }
+
+
+        @keyframes flash {
+
+            from {
+                opacity: .8;
+            }
+
+            to {
+                opacity: 0;
+            }
+
+        }
+
 
 
 
@@ -322,13 +460,6 @@
             .subtitle {
 
                 font-size: 17px;
-
-            }
-
-
-            .countdown {
-
-                gap: 8px;
 
             }
 
@@ -372,25 +503,23 @@
 
     <div class="container">
 
-        <div class="content" id="page">
-
-
-            <!-- CONTENT WILL LOAD HERE -->
-
-
-        </div>
+        <div class="content" id="page"></div>
 
     </div>
+
 
 
 
     <script>
 
 
-        // CHANGE THIS DATE
+        // SET INAUGURATION DATE
 
         const openingDate =
-            new Date("July 15, 2026 01:24:00").getTime();
+            new Date("August 20, 2026 11:00:00").getTime();
+
+
+        let opened = false;
 
 
 
@@ -398,7 +527,6 @@
 
 
             document.getElementById("page").innerHTML = `
-
 
 <div class="logo">
 Noman<span>Mobile</span>
@@ -456,7 +584,7 @@ Opening Ceremony
 
 
 <div class="date">
-15 July 2026 | 1:24 AM
+20 August 2026 | 11:00 AM
 </div>
 
 
@@ -465,19 +593,106 @@ Opening Ceremony
 Stay Tuned
 </a>
 
-
 `;
 
+        }
+
+
+
+        function celebration() {
+
+
+            let flash = document.createElement("div");
+
+            flash.className = "flash";
+
+            document.body.appendChild(flash);
+
+
+            setTimeout(() => flash.remove(), 800);
+
+
+
+            let colors = [
+                "#ff4d6d",
+                "#ffd166",
+                "#06d6a0",
+                "#118ab2",
+                "#c77dff"
+            ];
+
+
+
+            for (let i = 0; i < 30; i++) {
+
+
+                let b = document.createElement("div");
+
+                b.className = "balloon";
+
+                b.style.left = Math.random() * 100 + "vw";
+
+                b.style.background =
+                    colors[Math.floor(Math.random() * colors.length)];
+
+
+                b.style.animationDuration =
+                    (3 + Math.random() * 3) + "s";
+
+
+                document.body.appendChild(b);
+
+
+                setTimeout(() => b.remove(), 6000);
+
+            }
+
+
+
+
+            for (let i = 0; i < 100; i++) {
+
+
+                let c = document.createElement("div");
+
+                c.className = "confetti";
+
+                c.style.left = Math.random() * 100 + "vw";
+
+                c.style.background =
+                    colors[Math.floor(Math.random() * colors.length)];
+
+
+                c.style.animationDuration =
+                    (2 + Math.random() * 3) + "s";
+
+
+                document.body.appendChild(c);
+
+
+                setTimeout(() => c.remove(), 5000);
+
+            }
 
 
         }
 
 
 
+
+
         function showOpened() {
 
 
+            opened = true;
+
+            celebration();
+
+
+
             document.getElementById("page").innerHTML = `
+
+<div class="celebrate">
 
 
 <div class="logo">
@@ -488,17 +703,13 @@ Noman<span>Mobile</span>
 <div class="line"></div>
 
 
-
 <h1>
 We Are Open 🎉
 </h1>
 
 
-
 <p class="subtitle">
-
 Your Trusted Mobile Repair Center
-
 </p>
 
 
@@ -538,20 +749,19 @@ Accessories
 
 
 
-<a class="button" href="tel:+918795561029">
+<a class="button" href="tel:+91XXXXXXXXXX">
 Call Now
 </a>
 
 
-
-<a class="button whatsapp" href="https://wa.link/9y5dxb">
+<a class="button whatsapp">
 WhatsApp
 </a>
 
 
+</div>
+
 `;
-
-
 
         }
 
@@ -561,9 +771,12 @@ WhatsApp
         function update() {
 
 
-            const now = new Date().getTime();
+            if (opened) return;
 
-            const distance = openingDate - now;
+
+            let now = new Date().getTime();
+
+            let distance = openingDate - now;
 
 
 
@@ -577,36 +790,29 @@ WhatsApp
 
 
 
-            showComingSoon();
+            let days = Math.floor(
+                distance / (1000 * 60 * 60 * 24)
+            );
 
 
-
-            let days =
-                Math.floor(distance / (1000 * 60 * 60 * 24));
-
-
-            let hours =
-                Math.floor(
-                    (distance % (1000 * 60 * 60 * 24))
-                    /
-                    (1000 * 60 * 60)
-                );
+            let hours = Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                / (1000 * 60 * 60)
+            );
 
 
-            let minutes =
-                Math.floor(
-                    (distance % (1000 * 60 * 60))
-                    /
-                    (1000 * 60)
-                );
+            let minutes = Math.floor(
+                (distance % (1000 * 60 * 60))
+                /
+                (1000 * 60)
+            );
 
 
-            let seconds =
-                Math.floor(
-                    (distance % (1000 * 60))
-                    /
-                    1000
-                );
+            let seconds = Math.floor(
+                (distance % (1000 * 60))
+                /
+                1000
+            );
 
 
 
@@ -626,10 +832,12 @@ WhatsApp
                 String(seconds).padStart(2, "0");
 
 
-
         }
 
 
+
+
+        showComingSoon();
 
         update();
 
