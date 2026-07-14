@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Noman Mobile | Coming Soon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Arial,sans-serif;
+}
+
+body{
+height:100vh;
+background:#fafafa;
+color:#111;
+overflow:hidden;
+}
+
+
+.container{
+
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+}
+
+
+.content{
+
+animation:fade 1.5s ease;
+
+}
+
+
+@keyframes fade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+
+
+.logo{
+
+font-size:72px;
+font-weight:800;
+letter-spacing:-3px;
+
+}
+
+
+.logo span{
+
+color:#c79b30;
+
+}
+
+
+.line{
+
+height:1px;
+width:100px;
+background:#c79b30;
+margin:35px auto;
+
+}
+
+
+
+h1{
+
+font-size:48px;
+font-weight:600;
+letter-spacing:-1px;
+
+}
+
+
+
+.subtitle{
+
+margin-top:20px;
+font-size:20px;
+font-weight:300;
+color:#555;
+
+}
+
+
+
+.opening{
+
+margin-top:45px;
+font-size:18px;
+color:#777;
+
+}
+
+
+/* COUNTDOWN */
+
+
+.countdown{
+
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:25px;
+
+}
+
+
+.box{
+
+width:90px;
+height:90px;
+
+background:white;
+
+border-radius:18px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.08);
+
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+
+}
+
+
+.box span{
+
+font-size:32px;
+font-weight:700;
+color:#c79b30;
+
+}
+
+
+.box small{
+
+font-size:12px;
+color:#777;
+text-transform:uppercase;
+
+}
+
+
+
+
+.date{
+
+margin-top:25px;
+font-size:18px;
+color:#555;
+
+}
+
+
+
+/* BUTTON */
+
+
+.button{
+
+margin-top:40px;
+
+display:inline-block;
+
+padding:15px 40px;
+
+border-radius:50px;
+
+background:#111;
+
+color:white;
+
+text-decoration:none;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+
+.button:hover{
+
+background:#c79b30;
+
+transform:translateY(-3px);
+
+}
+
+
+
+/* DECORATION */
+
+
+.circle1,
+.circle2{
+
+position:absolute;
+
+border-radius:50%;
+
+filter:blur(80px);
+
+opacity:.25;
+
+z-index:-1;
+
+}
+
+
+.circle1{
+
+width:300px;
+height:300px;
+
+background:#c79b30;
+
+top:-100px;
+left:-100px;
+
+}
+
+
+.circle2{
+
+width:300px;
+height:300px;
+
+background:#ddd;
+
+bottom:-100px;
+right:-100px;
+
+}
+
+
+
+@media(max-width:700px){
+
+.logo{
+
+font-size:48px;
+
+}
+
+h1{
+
+font-size:34px;
+
+}
+
+
+.countdown{
+
+gap:8px;
+
+}
+
+
+.box{
+
+width:75px;
+height:75px;
+
+}
+
+
+.box span{
+
+font-size:25px;
+
+}
+
+.subtitle{
+
+font-size:17px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="circle1"></div>
+<div class="circle2"></div>
+
+
+
+<div class="container">
+
+<div class="content">
+
+
+<div class="logo">
+Noman<span>Mobile</span>
+</div>
+
+
+<div class="line"></div>
+
+
+<h1>
+Grand Opening Soon
+</h1>
+
+
+<p class="subtitle">
+Premium Mobile Repair & Technology Services
+</p>
+
+
+
+<div class="opening">
+Opening Ceremony
+</div>
+
+
+
+<div class="countdown">
+
+
+<div class="box">
+<span id="days">00</span>
+<small>Days</small>
+</div>
+
+
+<div class="box">
+<span id="hours">00</span>
+<small>Hours</small>
+</div>
+
+
+<div class="box">
+<span id="minutes">00</span>
+<small>Minutes</small>
+</div>
+
+
+<div class="box">
+<span id="seconds">00</span>
+<small>Seconds</small>
+</div>
+
+
+</div>
+
+
+
+<div class="date">
+15 August 2026 | 10:00 AM
+</div>
+
+
+
+<a class="button" href="#">
+Stay Tuned
+</a>
+
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+// SET YOUR INAUGURATION DATE HERE
+
+const launchDate = new Date("August 15, 2026 10:00:00").getTime();
+
+
+
+const timer = setInterval(function(){
+
+
+const now = new Date().getTime();
+
+
+const distance = launchDate - now;
+
+
+
+if(distance <= 0){
+
+clearInterval(timer);
+
+document.querySelector(".countdown").innerHTML =
+"<h2>We Are Open!</h2>";
+
+return;
+
+}
+
+
+
+const days = Math.floor(
+distance / (1000 * 60 * 60 * 24)
+);
+
+
+const hours = Math.floor(
+(distance % (1000 * 60 * 60 * 24))
+/ (1000 * 60 * 60)
+);
+
+
+const minutes = Math.floor(
+(distance % (1000 * 60 * 60))
+/ (1000 * 60)
+);
+
+
+const seconds = Math.floor(
+(distance % (1000 * 60))
+/ 1000
+);
+
+
+
+document.getElementById("days").innerHTML =
+days.toString().padStart(2,"0");
+
+
+document.getElementById("hours").innerHTML =
+hours.toString().padStart(2,"0");
+
+
+document.getElementById("minutes").innerHTML =
+minutes.toString().padStart(2,"0");
+
+
+document.getElementById("seconds").innerHTML =
+seconds.toString().padStart(2,"0");
+
+
+},1000);
+
+
+</script>
+
+
+</body>
+</html>
