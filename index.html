@@ -1,327 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Noman Mobile | Coming Soon</title>
+    <title>Noman Mobile</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 
-<style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, Arial, sans-serif;
+        }
 
-body{
-height:100vh;
-background:#fafafa;
-color:#111;
-overflow:hidden;
-}
 
+        body {
 
-.container{
+            height: 100vh;
+            background: #fafafa;
+            color: #111;
+            overflow: hidden;
 
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
+        }
 
-}
 
+        /* BACKGROUND */
 
-.content{
+        .circle1,
+        .circle2 {
 
-animation:fade 1.5s ease;
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .25;
+            z-index: -1;
 
-}
+        }
 
 
-@keyframes fade{
+        .circle1 {
 
-from{
-opacity:0;
-transform:translateY(30px);
-}
+            width: 300px;
+            height: 300px;
+            background: #c79b30;
+            top: -100px;
+            left: -100px;
 
-to{
-opacity:1;
-transform:none;
-}
+        }
 
-}
 
+        .circle2 {
 
+            width: 300px;
+            height: 300px;
+            background: #ddd;
+            bottom: -100px;
+            right: -100px;
 
-.logo{
+        }
 
-font-size:72px;
-font-weight:800;
-letter-spacing:-3px;
 
-}
+        /* MAIN */
 
+        .container {
 
-.logo span{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
 
-color:#c79b30;
+        }
 
-}
 
+        .content {
 
-.line{
+            animation: fade 1.5s ease;
 
-height:1px;
-width:100px;
-background:#c79b30;
-margin:35px auto;
+        }
 
-}
 
+        @keyframes fade {
 
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
 
-h1{
+            to {
+                opacity: 1;
+                transform: none;
+            }
 
-font-size:48px;
-font-weight:600;
-letter-spacing:-1px;
+        }
 
-}
 
+        /* LOGO */
 
+        .logo {
 
-.subtitle{
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: -3px;
 
-margin-top:20px;
-font-size:20px;
-font-weight:300;
-color:#555;
+        }
 
-}
 
+        .logo span {
 
+            color: #c79b30;
 
-.opening{
+        }
 
-margin-top:45px;
-font-size:18px;
-color:#777;
 
-}
+        .line {
 
+            width: 100px;
+            height: 1px;
+            background: #c79b30;
+            margin: 35px auto;
 
-/* COUNTDOWN */
+        }
 
 
-.countdown{
 
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:25px;
+        /* TEXT */
 
-}
+        h1 {
 
+            font-size: 48px;
+            font-weight: 600;
 
-.box{
+        }
 
-width:90px;
-height:90px;
 
-background:white;
+        .subtitle {
 
-border-radius:18px;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #555;
+            font-weight: 300;
 
-box-shadow:
-0 10px 30px rgba(0,0,0,.08);
+        }
 
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
 
-}
+        .opening {
 
+            margin-top: 45px;
+            color: #777;
+            font-size: 18px;
 
-.box span{
+        }
 
-font-size:32px;
-font-weight:700;
-color:#c79b30;
 
-}
 
+        /* COUNTDOWN */
 
-.box small{
+        .countdown {
 
-font-size:12px;
-color:#777;
-text-transform:uppercase;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
 
-}
+        }
 
 
+        .box {
 
+            width: 90px;
+            height: 90px;
 
-.date{
+            background: white;
 
-margin-top:25px;
-font-size:18px;
-color:#555;
+            border-radius: 18px;
 
-}
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
 
 
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .08);
 
-/* BUTTON */
+        }
 
 
-.button{
+        .box span {
 
-margin-top:40px;
+            font-size: 32px;
+            font-weight: 700;
+            color: #c79b30;
 
-display:inline-block;
+        }
 
-padding:15px 40px;
 
-border-radius:50px;
+        .box small {
 
-background:#111;
+            font-size: 12px;
+            color: #777;
 
-color:white;
+        }
 
-text-decoration:none;
 
-font-size:15px;
 
-transition:.3s;
+        .date {
 
-}
+            margin-top: 25px;
+            font-size: 18px;
+            color: #555;
 
+        }
 
-.button:hover{
 
-background:#c79b30;
 
-transform:translateY(-3px);
+        /* BUTTON */
 
-}
+        .button {
 
+            display: inline-block;
 
+            margin-top: 40px;
 
-/* DECORATION */
+            padding: 15px 40px;
 
+            border-radius: 50px;
 
-.circle1,
-.circle2{
+            background: #111;
 
-position:absolute;
+            color: white;
 
-border-radius:50%;
+            text-decoration: none;
 
-filter:blur(80px);
+            transition: .3s;
 
-opacity:.25;
+        }
 
-z-index:-1;
 
-}
+        .button:hover {
 
+            background: #c79b30;
+            transform: translateY(-3px);
 
-.circle1{
+        }
 
-width:300px;
-height:300px;
 
-background:#c79b30;
 
-top:-100px;
-left:-100px;
+        /* OPEN PAGE */
 
-}
 
+        .services {
 
-.circle2{
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+            flex-wrap: wrap;
 
-width:300px;
-height:300px;
+        }
 
-background:#ddd;
 
-bottom:-100px;
-right:-100px;
+        .service {
 
-}
+            background: white;
 
+            width: 140px;
 
+            padding: 25px 10px;
 
-@media(max-width:700px){
+            border-radius: 20px;
 
-.logo{
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, .08);
 
-font-size:48px;
+            font-size: 15px;
 
-}
+        }
 
-h1{
 
-font-size:34px;
+        .service span {
 
-}
+            font-size: 30px;
 
+        }
 
-.countdown{
 
-gap:8px;
 
-}
+        .whatsapp {
 
+            background: #25D366;
+            margin-left: 10px;
 
-.box{
+        }
 
-width:75px;
-height:75px;
 
-}
 
+        @media(max-width:700px) {
 
-.box span{
 
-font-size:25px;
+            .logo {
 
-}
+                font-size: 48px;
 
-.subtitle{
+            }
 
-font-size:17px;
 
-}
+            h1 {
 
-}
+                font-size: 34px;
 
-</style>
+            }
+
+
+            .subtitle {
+
+                font-size: 17px;
+
+            }
+
+
+            .countdown {
+
+                gap: 8px;
+
+            }
+
+
+            .box {
+
+                width: 75px;
+                height: 75px;
+
+            }
+
+
+            .box span {
+
+                font-size: 25px;
+
+            }
+
+
+            .service {
+
+                width: 120px;
+
+            }
+
+
+        }
+    </style>
 
 </head>
+
 
 
 <body>
 
 
-<div class="circle1"></div>
-<div class="circle2"></div>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
 
 
 
-<div class="container">
+    <div class="container">
 
-<div class="content">
+        <div class="content" id="page">
+
+
+            <!-- CONTENT WILL LOAD HERE -->
+
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+
+        // CHANGE THIS DATE
+
+        const openingDate =
+            new Date("July 15, 2026 01:24:00").getTime();
+
+
+
+        function showComingSoon() {
+
+
+            document.getElementById("page").innerHTML = `
 
 
 <div class="logo">
@@ -340,7 +416,6 @@ Grand Opening Soon
 <p class="subtitle">
 Premium Mobile Repair & Technology Services
 </p>
-
 
 
 <div class="opening">
@@ -381,100 +456,189 @@ Opening Ceremony
 
 
 <div class="date">
-20 August 2026 | 11:00 AM
+15 July 2026 | 1:24 AM
 </div>
 
 
 
-<a class="button" href="#">
+<a class="button">
 Stay Tuned
 </a>
 
 
+`;
+
+
+
+        }
+
+
+
+        function showOpened() {
+
+
+            document.getElementById("page").innerHTML = `
+
+
+<div class="logo">
+Noman<span>Mobile</span>
+</div>
+
+
+<div class="line"></div>
+
+
+
+<h1>
+We Are Open 🎉
+</h1>
+
+
+
+<p class="subtitle">
+
+Your Trusted Mobile Repair Center
+
+</p>
+
+
+
+<div class="services">
+
+
+<div class="service">
+<span>📱</span>
+<br>
+Mobile Repair
+</div>
+
+
+<div class="service">
+<span>🔧</span>
+<br>
+Hardware Repair
+</div>
+
+
+<div class="service">
+<span>⚡</span>
+<br>
+Software Service
+</div>
+
+
+<div class="service">
+<span>🎧</span>
+<br>
+Accessories
+</div>
+
 
 </div>
 
-</div>
+
+
+<a class="button" href="tel:+918795561029">
+Call Now
+</a>
 
 
 
-<script>
+<a class="button whatsapp" href="https://wa.link/9y5dxb">
+WhatsApp
+</a>
 
 
-// SET YOUR INAUGURATION DATE HERE
-
-const launchDate = new Date("August 20, 2026 11:00:00").getTime();
-
-
-
-const timer = setInterval(function(){
-
-
-const now = new Date().getTime();
-
-
-const distance = launchDate - now;
+`;
 
 
 
-if(distance <= 0){
-
-clearInterval(timer);
-
-document.querySelector(".countdown").innerHTML =
-"<h2>We Are Open!</h2>";
-
-return;
-
-}
+        }
 
 
 
-const days = Math.floor(
-distance / (1000 * 60 * 60 * 24)
-);
+
+        function update() {
 
 
-const hours = Math.floor(
-(distance % (1000 * 60 * 60 * 24))
-/ (1000 * 60 * 60)
-);
+            const now = new Date().getTime();
 
-
-const minutes = Math.floor(
-(distance % (1000 * 60 * 60))
-/ (1000 * 60)
-);
-
-
-const seconds = Math.floor(
-(distance % (1000 * 60))
-/ 1000
-);
+            const distance = openingDate - now;
 
 
 
-document.getElementById("days").innerHTML =
-days.toString().padStart(2,"0");
+            if (distance <= 0) {
+
+                showOpened();
+
+                return;
+
+            }
 
 
-document.getElementById("hours").innerHTML =
-hours.toString().padStart(2,"0");
+
+            showComingSoon();
 
 
-document.getElementById("minutes").innerHTML =
-minutes.toString().padStart(2,"0");
+
+            let days =
+                Math.floor(distance / (1000 * 60 * 60 * 24));
 
 
-document.getElementById("seconds").innerHTML =
-seconds.toString().padStart(2,"0");
+            let hours =
+                Math.floor(
+                    (distance % (1000 * 60 * 60 * 24))
+                    /
+                    (1000 * 60 * 60)
+                );
 
 
-},1000);
+            let minutes =
+                Math.floor(
+                    (distance % (1000 * 60 * 60))
+                    /
+                    (1000 * 60)
+                );
 
 
-</script>
+            let seconds =
+                Math.floor(
+                    (distance % (1000 * 60))
+                    /
+                    1000
+                );
+
+
+
+            document.getElementById("days").innerHTML =
+                String(days).padStart(2, "0");
+
+
+            document.getElementById("hours").innerHTML =
+                String(hours).padStart(2, "0");
+
+
+            document.getElementById("minutes").innerHTML =
+                String(minutes).padStart(2, "0");
+
+
+            document.getElementById("seconds").innerHTML =
+                String(seconds).padStart(2, "0");
+
+
+
+        }
+
+
+
+        update();
+
+        setInterval(update, 1000);
+
+
+    </script>
 
 
 </body>
+
 </html>
