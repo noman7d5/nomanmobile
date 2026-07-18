@@ -1,870 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Noman Mobile</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Inter, Arial, sans-serif;
-        }
-
-
-        body {
-
-            height: 100vh;
-            background: #fafafa;
-            color: #111;
-            overflow: hidden;
-
-        }
-
-
-
-        /* BACKGROUND */
-
-        .circle1,
-        .circle2 {
-
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: .25;
-            z-index: -1;
-
-        }
-
-
-        .circle1 {
-
-            width: 300px;
-            height: 300px;
-            background: #c79b30;
-            top: -100px;
-            left: -100px;
-
-        }
-
-
-        .circle2 {
-
-            width: 300px;
-            height: 300px;
-            background: #ddd;
-            bottom: -100px;
-            right: -100px;
-
-        }
-
-
-
-        /* MAIN */
-
-        .container {
-
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-        }
-
-
-        .content {
-
-            animation: fade 1.5s ease;
-
-        }
-
-
-
-        @keyframes fade {
-
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-
-            to {
-                opacity: 1;
-                transform: none;
-            }
-
-        }
-
-
-
-        /* LOGO */
-
-        .logo {
-
-            font-size: 72px;
-            font-weight: 800;
-            letter-spacing: -3px;
-
-        }
-
-
-        .logo span {
-
-            color: #c79b30;
-
-        }
-
-
-        .line {
-
-            width: 100px;
-            height: 1px;
-            background: #c79b30;
-            margin: 35px auto;
-
-        }
-
-
-
-        h1 {
-
-            font-size: 48px;
-            font-weight: 600;
-
-        }
-
-
-        .subtitle {
-
-            margin-top: 20px;
-            font-size: 20px;
-            color: #555;
-            font-weight: 300;
-
-        }
-
-
-        .opening {
-
-            margin-top: 45px;
-            color: #777;
-            font-size: 18px;
-
-        }
-
-
-
-        /* COUNTDOWN */
-
-        .countdown {
-
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
-
-        }
-
-
-        .box {
-
-            width: 90px;
-            height: 90px;
-
-            background: white;
-            border-radius: 18px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .08);
-
-        }
-
-
-        .box span {
-
-            font-size: 32px;
-            font-weight: 700;
-            color: #c79b30;
-
-        }
-
-
-        .box small {
-
-            font-size: 12px;
-            color: #777;
-
-        }
-
-
-        .date {
-
-            margin-top: 25px;
-            font-size: 18px;
-            color: #555;
-
-        }
-
-
-
-        /* BUTTON */
-
-        .button {
-
-            display: inline-block;
-
-            margin-top: 40px;
-
-            padding: 15px 40px;
-
-            border-radius: 50px;
-
-            background: #111;
-
-            color: white;
-
-            text-decoration: none;
-
-            transition: .3s;
-
-        }
-
-
-        .button:hover {
-
-            background: #c79b30;
-            transform: translateY(-3px);
-
-        }
-
-
-
-        /* OPEN PAGE */
-
-        .services {
-
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-
-        }
-
-
-        .service {
-
-            background: white;
-
-            width: 140px;
-
-            padding: 25px 10px;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, .08);
-
-        }
-
-
-        .service span {
-
-            font-size: 30px;
-
-        }
-
-
-
-        .whatsapp {
-
-            background: #25D366;
-            margin-left: 10px;
-
-        }
-
-
-
-        /* CELEBRATION */
-
-
-        .celebrate {
-
-            animation: celebrateIn 1.5s ease;
-
-        }
-
-
-        @keyframes celebrateIn {
-
-            0% {
-                opacity: 0;
-                transform: scale(.5);
-            }
-
-            70% {
-                transform: scale(1.1);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-        }
-
-
-
-        .balloon {
-
-            position: fixed;
-
-            bottom: -100px;
-
-            width: 35px;
-            height: 45px;
-
-            border-radius: 50%;
-
-            z-index: 999;
-
-            animation: fly 5s linear forwards;
-
-        }
-
-
-        .balloon:after {
-
-            content: "";
-
-            position: absolute;
-
-            height: 35px;
-            width: 2px;
-
-            background: #555;
-
-            bottom: -35px;
-
-            left: 50%;
-
-        }
-
-
-
-        @keyframes fly {
-
-            to {
-
-                transform:
-                    translateY(-120vh) rotate(360deg);
-
-                opacity: 0;
-
-            }
-
-        }
-
-
-
-        .confetti {
-
-            position: fixed;
-
-            top: -20px;
-
-            width: 10px;
-            height: 20px;
-
-            z-index: 999;
-
-            animation: drop 4s linear forwards;
-
-        }
-
-
-
-        @keyframes drop {
-
-            to {
-
-                transform:
-                    translateY(110vh) rotate(720deg);
-
-            }
-
-        }
-
-
-
-        .flash {
-
-            position: fixed;
-
-            inset: 0;
-
-            background: #c79b30;
-
-            z-index: 998;
-
-            animation: flash .8s;
-
-        }
-
-
-        @keyframes flash {
-
-            from {
-                opacity: .8;
-            }
-
-            to {
-                opacity: 0;
-            }
-
-        }
-
-
-
-
-        @media(max-width:700px) {
-
-
-            .logo {
-
-                font-size: 48px;
-
-            }
-
-
-            h1 {
-
-                font-size: 34px;
-
-            }
-
-
-            .subtitle {
-
-                font-size: 17px;
-
-            }
-
-
-            .box {
-
-                width: 75px;
-                height: 75px;
-
-            }
-
-
-            .box span {
-
-                font-size: 25px;
-
-            }
-
-
-            .service {
-
-                width: 120px;
-
-            }
-
-
-        }
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noman Mobile Repairing Centre — Roshan Chauraha, Amardobha</title>
+<meta name="description" content="Noman Mobile Repairing Centre — genuine screen, battery, charging port &amp; chip-level phone repair, plus mobile accessories at Roshan Chauraha, Amardobha.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230A1220%22/><text x=%2250%25%22 y=%2258%25%22 font-size=%2250%22 fill=%22%232DD4B0%22 text-anchor=%22middle%22 font-family=%22monospace%22>N</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
-
-
 <body>
 
+<!-- decorative circuit background -->
+<div class="circuit-bg" aria-hidden="true"></div>
 
-    <div class="circle1"></div>
-    <div class="circle2"></div>
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="wrap header-wrap">
+    <a href="#top" class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" width="34" height="34">
+          <rect x="12" y="4" width="16" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="16" y1="9" x2="24" y2="9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M23 22 L18 27 L21 27 L17 33 L26 25 L22 25 Z" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">NOMAN</span>
+        <span class="brand-sub">Mobile Repairing Centre</span>
+      </span>
+    </a>
 
+    <nav class="main-nav" id="main-nav">
+      <a href="#services">Services</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#process">Process</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
+    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book a Repair</a>
 
-    <div class="container">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-        <div class="content" id="page"></div>
+<main>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot-pulse" aria-hidden="true"></span>Amardobha's repair bench</p>
+        <h1>We fix what your<br> phone can't survive<br> on its own.</h1>
+        <p class="hero-sub">From a cracked screen to a dead motherboard — genuine parts, transparent pricing and technicians who work chip-level, not just surface-level. All major brands, all repair levels, one counter at Roshan Chauraha.</p>
 
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Book a Repair</a>
+          <a href="tel:+910000000000" class="btn btn-outline">Call the Shop</a>
+        </div>
+
+        <div class="opening-strip" aria-label="Grand opening countdown">
+          <span class="opening-label">Grand opening — 20 Aug 2026</span>
+          <div class="countdown" id="countdown">
+            <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">days</span></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">hrs</span></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">min</span></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">sec</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="ticket" id="ticket">
+          <div class="ticket-hole ticket-hole--l" aria-hidden="true"></div>
+          <div class="ticket-hole ticket-hole--r" aria-hidden="true"></div>
+          <div class="ticket-top">
+            <span class="ticket-title">JOB TICKET</span>
+            <span class="ticket-id">#0001</span>
+          </div>
+          <div class="ticket-rule" aria-hidden="true"></div>
+          <div class="ticket-row">
+            <span class="ticket-key">DEVICE</span>
+            <span class="ticket-val" id="ticket-device">iPhone 13</span>
+          </div>
+          <div class="ticket-row">
+            <span class="ticket-key">ISSUE</span>
+            <span class="ticket-val" id="ticket-issue">Cracked screen</span>
+          </div>
+          <div class="ticket-row">
+            <span class="ticket-key">EST. TIME</span>
+            <span class="ticket-val">Same day</span>
+          </div>
+          <div class="ticket-rule" aria-hidden="true"></div>
+          <div class="ticket-status" id="ticket-status">
+            <div class="status-step is-active" data-step="0"><span class="status-dot"></span>Diagnosing</div>
+            <div class="status-step" data-step="1"><span class="status-dot"></span>Repairing</div>
+            <div class="status-step" data-step="2"><span class="status-dot"></span>Ready ✓</div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
+  <!-- ============ TRUST STRIP ============ -->
+  <section class="trust-strip">
+    <div class="wrap trust-wrap">
+      <div class="trust-item"><strong>All Brands</strong><span>Apple · Samsung · Xiaomi · Oppo · Vivo · Realme · OnePlus &amp; more</span></div>
+      <div class="trust-item"><strong>Genuine Parts</strong><span>Sourced &amp; tested before fitting</span></div>
+      <div class="trust-item"><strong>Repair Warranty</strong><span>On every job we complete</span></div>
+      <div class="trust-item"><strong>Zero to Chip-Level</strong><span>Software fixes to motherboard repair</span></div>
+    </div>
+  </section>
 
+  <!-- ============ SERVICES ============ -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <p class="section-eyebrow">Repair services</p>
+      <h2 class="section-title">Every phone problem, one counter</h2>
+      <p class="section-lead">If it has a circuit board, we've probably already fixed one like it. Prices below are starting estimates — final quote depends on your device model and part condition.</p>
 
+      <div class="grid services-grid">
 
-    <script>
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 5l6 6M9 11l6-6"/></svg>
+          </div>
+          <h3>Screen Replacement</h3>
+          <p>Cracked glass, dead pixels or touch not responding — display swapped with tested panels.</p>
+          <span class="price">From ₹799<sup>*</sup></span>
+        </article>
 
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="10" height="18" rx="2"/><rect x="10" y="0.5" width="4" height="2.5" rx="0.5"/></svg>
+          </div>
+          <h3>Battery Replacement</h3>
+          <p>Fast drain, sudden shutdowns or swelling — replaced with capacity-tested batteries.</p>
+          <span class="price">From ₹499<sup>*</sup></span>
+        </article>
 
-        // SET INAUGURATION DATE
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg>
+          </div>
+          <h3>Charging Port Repair</h3>
+          <p>Loose connection, slow charging or "moisture detected" errors, cleaned or replaced.</p>
+          <span class="price">From ₹349<sup>*</sup></span>
+        </article>
 
-        const openingDate =
-            new Date("August 20, 2026 11:00:00").getTime();
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c-4 4-7 7.5-7 11a7 7 0 0 0 14 0c0-3.5-3-7-7-11z"/></svg>
+          </div>
+          <h3>Water Damage Repair</h3>
+          <p>Emergency cleaning, corrosion removal and board-level rescue after liquid exposure.</p>
+          <span class="price">From ₹599<sup>*</sup></span>
+        </article>
 
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <!-- <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg> -->
+        <img width="25" height="25" src="https://img.icons8.com/material/24/22C3E6/camera--v1.png" alt="camera--v1"/>
+        </div>
+          <h3>Camera &amp; Lens Repair</h3>
+          <p>Blurry shots, focus failure or shattered lens glass — front or rear, fixed and tested.</p>
+          <span class="price">From ₹449<sup>*</sup></span>
+        </article>
 
-        let opened = false;
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15c1-6 3-10 8-10s7 4 8 10"/><path d="M2 15h20"/></svg>
+          </div>
+          <h3>Speaker &amp; Mic Repair</h3>
+          <p>No sound, muffled calls or others can't hear you — speaker and mic diagnosis &amp; repair.</p>
+          <span class="price">From ₹299<sup>*</sup></span>
+        </article>
 
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg>
+          </div>
+          <h3>Motherboard / Chip-Level Repair</h3>
+          <p>IC replacement, short-circuit tracing and dead-board recovery — our advanced-level work.</p>
+          <span class="price">Diagnosis first</span>
+        </article>
 
+        <article class="card service-card">
+          <div class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8h18M8 12h4"/></svg>
+          </div>
+          <h3>Software &amp; OS Issues</h3>
+          <p>Boot loops, frozen screens, virus cleanup, updates and data-safe factory resets.</p>
+          <span class="price">From ₹199<sup>*</sup></span>
+        </article>
 
-        function showComingSoon() {
+      </div>
+      <p class="fine-print"><sup>*</sup>Starting prices — final cost depends on device model and parts required. Ask at the counter or on call for an exact quote.</p>
+    </div>
+  </section>
 
+  <!-- ============ ACCESSORIES ============ -->
+  <section class="section section-alt" id="accessories">
+    <div class="wrap">
+      <p class="section-eyebrow">Accessories counter</p>
+      <h2 class="section-title">Everything around the phone, too</h2>
+      <p class="section-lead">Walk in for a repair, walk out sorted — we stock the essentials for every device we service.</p>
 
-            document.getElementById("page").innerHTML = `
+      <div class="grid accessories-grid">
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="2" width="12" height="20" rx="3"/></svg></div>
+          <h3>Cases &amp; Covers</h3>
+        </article>
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="3" width="10" height="18" rx="1"/></svg></div>
+          <h3>Tempered Glass &amp; Screen Guards</h3>
+        </article>
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h7l-1 8 11-14h-7z"/></svg></div>
+          <h3>Chargers &amp; Cables</h3>
+        </article>
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+          <h3>Power Banks</h3>
+        </article>
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18V5l10-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg></div>
+          <h3>Earphones &amp; Earbuds</h3>
+        </article>
+        <article class="acc-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="8" width="16" height="10" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+          <h3>Memory Cards &amp; Storage</h3>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<div class="logo">
-Noman<span>Mobile</span>
-</div>
+  <!-- ============ PROCESS ============ -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <p class="section-eyebrow">How a repair happens</p>
+      <h2 class="section-title">From drop-off to done, in five steps</h2>
 
+      <div class="process-rail">
+        <div class="process-step">
+          <span class="process-num">01</span>
+          <h3>Diagnose</h3>
+          <p>We check the device in front of you and identify the real fault — no guesswork.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">02</span>
+          <h3>Quote</h3>
+          <p>You get a clear price before any work starts. No surprise charges at pickup.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">03</span>
+          <h3>Repair</h3>
+          <p>Our technician works on it — from a quick fix to full chip-level rework.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">04</span>
+          <h3>Quality Check</h3>
+          <p>Every repair is tested end-to-end before it's called complete.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-num">05</span>
+          <h3>Pickup</h3>
+          <p>Collect your phone, working like it should — with warranty on the repair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="line"></div>
+  <!-- ============ WHY US ============ -->
+  <section class="section section-alt" id="why-us">
+    <div class="wrap">
+      <p class="section-eyebrow">Why Noman Mobile Repairing Centre</p>
+      <h2 class="section-title">Built on the bench, not just the counter</h2>
 
+      <div class="grid why-grid">
+        <div class="why-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6z"/></svg></div>
+          <h3>Honest Diagnosis</h3>
+          <p>We tell you exactly what's wrong and what it'll cost — before touching a screwdriver.</p>
+        </div>
+        <div class="why-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg></div>
+          <h3>Chip-Level Expertise</h3>
+          <p>Most shops stop at parts-swapping. We go down to board-level when a phone needs it.</p>
+        </div>
+        <div class="why-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Fast Turnaround</h3>
+          <p>Most common repairs — screen, battery, charging port — done the same day.</p>
+        </div>
+        <div class="why-card">
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <h3>Warranty You Can Trust</h3>
+          <p>Every repair carries a warranty — if the same issue returns, we sort it, no charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<h1>
-Grand Opening Soon
-</h1>
+  <!-- ============ LOCATION ============ -->
+  <section class="section" id="location">
+    <div class="wrap location-wrap">
+      <div class="location-copy">
+        <p class="section-eyebrow">Find us</p>
+        <h2 class="section-title">Roshan Chauraha, Amardobha</h2>
+        <p class="section-lead">Walk in with your device, or call ahead so we're ready when you arrive.</p>
 
+        <ul class="info-list">
+          <li>
+            <span class="info-label">Address</span>
+            <span class="info-value">Noman Mobile Repairing Centre, Roshan Chauraha, Amardobha</span>
+          </li>
+          <li>
+            <span class="info-label">Opening hours</span>
+            <span class="info-value">Mon – Sat, 10:00 AM – 8:00 PM<br>Sunday: 11:00 AM – 5:00 PM</span>
+          </li>
+          <li>
+            <span class="info-label">Phone / WhatsApp</span>
+            <span class="info-value">+91 00000 00000 <em>(update with your number)</em></span>
+          </li>
+        </ul>
+      </div>
 
-<p class="subtitle">
-Premium Mobile Repair & Technology Services
-</p>
+      <div class="location-map">
+        <iframe
+          title="Map to Noman Mobile Repairing Centre, Roshan Chauraha, Amardobha"
+          src="https://www.google.com/maps?q=Roshan+Chauraha+Amardobha&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
 
+  <!-- ============ CONTACT / CTA ============ -->
+  <section class="section cta-section" id="contact">
+    <div class="wrap cta-wrap">
+      <h2>Phone acting up? Bring it in — we'll take a look for free.</h2>
+      <p>Free diagnosis on every visit. You only pay if you decide to go ahead with the repair.</p>
+      <div class="cta-actions">
+        <a href="tel:+910000000000" class="btn btn-primary">Call +91 00000 00000</a>
+        <a href="https://wa.me/910000000000" target="_blank" rel="noopener" class="btn btn-outline">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-<div class="opening">
-Opening Ceremony
-</div>
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer-wrap">
+    <div class="footer-brand">
+      <span class="brand-name">NOMAN</span>
+      <span class="brand-sub">Mobile Repairing Centre</span>
+      <p>Roshan Chauraha, Amardobha</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="#services">Services</a>
+      <a href="#accessories">Accessories</a>
+      <a href="#process">Process</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-copy">© <span id="year"></span> Noman Mobile Repairing Centre. Grand opening 20 August 2026.</p>
+  </div>
+</footer>
 
-
-
-<div class="countdown">
-
-
-<div class="box">
-<span id="days">00</span>
-<small>Days</small>
-</div>
-
-
-<div class="box">
-<span id="hours">00</span>
-<small>Hours</small>
-</div>
-
-
-<div class="box">
-<span id="minutes">00</span>
-<small>Minutes</small>
-</div>
-
-
-<div class="box">
-<span id="seconds">00</span>
-<small>Seconds</small>
-</div>
-
-
-</div>
-
-
-
-<div class="date">
-20 August 2026 | 11:00 AM
-</div>
-
-<div class="date" style="font-size:16px; margin-top:12px;">
-📍
-<a href="https://maps.google.com/?q=Roshan+Chauraha,+Rasoolabad,+Amardobha,+Sant+Kabir+Nagar+272199"
-   target="_blank"
-   style="text-decoration:none;color:#555;">
-Roshan Chauraha, Rasoolabad, Amardobha, S.K.N. 272199
+<a href="https://wa.me/910000000000" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Message on WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.9-1.4C8.4 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.9 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-5-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3.1 0-1.5.8-2.2 1-2.5.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.5.3.1.2.1.9-.1 1.6z"/></svg>
 </a>
-</div>
 
-
-
-<a class="button">
-Stay Tuned
-</a>
-
-`;
-
-        }
-
-
-
-        function celebration() {
-
-
-            let flash = document.createElement("div");
-
-            flash.className = "flash";
-
-            document.body.appendChild(flash);
-
-
-            setTimeout(() => flash.remove(), 800);
-
-
-
-            let colors = [
-                "#ff4d6d",
-                "#ffd166",
-                "#06d6a0",
-                "#118ab2",
-                "#c77dff"
-            ];
-
-
-
-            for (let i = 0; i < 30; i++) {
-
-
-                let b = document.createElement("div");
-
-                b.className = "balloon";
-
-                b.style.left = Math.random() * 100 + "vw";
-
-                b.style.background =
-                    colors[Math.floor(Math.random() * colors.length)];
-
-
-                b.style.animationDuration =
-                    (3 + Math.random() * 3) + "s";
-
-
-                document.body.appendChild(b);
-
-
-                setTimeout(() => b.remove(), 6000);
-
-            }
-
-
-
-
-            for (let i = 0; i < 100; i++) {
-
-
-                let c = document.createElement("div");
-
-                c.className = "confetti";
-
-                c.style.left = Math.random() * 100 + "vw";
-
-                c.style.background =
-                    colors[Math.floor(Math.random() * colors.length)];
-
-
-                c.style.animationDuration =
-                    (2 + Math.random() * 3) + "s";
-
-
-                document.body.appendChild(c);
-
-
-                setTimeout(() => c.remove(), 5000);
-
-            }
-
-
-        }
-
-
-
-
-
-        function showOpened() {
-
-
-            opened = true;
-
-            celebration();
-
-
-
-            document.getElementById("page").innerHTML = `
-
-<div class="celebrate">
-
-
-<div class="logo">
-Noman<span>Mobile</span>
-</div>
-
-
-<div class="line"></div>
-
-
-<h1>
-We Are Open 🎉
-</h1>
-
-
-<p class="subtitle">
-Your Trusted Mobile Repair Center
-</p>
-
-<div class="date" style="font-size:16px; margin-top:12px;">
-📍
-<a href="https://maps.google.com/?q=Roshan+Chauraha,+Rasoolabad,+Amardobha,+Sant+Kabir+Nagar+272199"
-   target="_blank"
-   style="text-decoration:none;color:#555;">
-Roshan Chauraha, Rasoolabad, Amardobha, S.K.N. 272199
-</a>
-</div>
-
-
-
-<div class="services">
-
-
-<div class="service">
-<span>📱</span>
-<br>
-Mobile Repair
-</div>
-
-
-<div class="service">
-<span>🔧</span>
-<br>
-Hardware Repair
-</div>
-
-
-<div class="service">
-<span>⚡</span>
-<br>
-Software Service
-</div>
-
-
-<div class="service">
-<span>🎧</span>
-<br>
-Accessories
-</div>
-
-
-</div>
-
-
-
-<a class="button" href="tel:+91XXXXXXXXXX">
-Call Now
-</a>
-
-
-<a class="button whatsapp">
-WhatsApp
-</a>
-
-
-</div>
-
-`;
-
-        }
-
-
-
-
-        function update() {
-
-
-            if (opened) return;
-
-
-            let now = new Date().getTime();
-
-            let distance = openingDate - now;
-
-
-
-            if (distance <= 0) {
-
-                showOpened();
-
-                return;
-
-            }
-
-
-
-            let days = Math.floor(
-                distance / (1000 * 60 * 60 * 24)
-            );
-
-
-            let hours = Math.floor(
-                (distance % (1000 * 60 * 60 * 24))
-                / (1000 * 60 * 60)
-            );
-
-
-            let minutes = Math.floor(
-                (distance % (1000 * 60 * 60))
-                /
-                (1000 * 60)
-            );
-
-
-            let seconds = Math.floor(
-                (distance % (1000 * 60))
-                /
-                1000
-            );
-
-
-
-            document.getElementById("days").innerHTML =
-                String(days).padStart(2, "0");
-
-
-            document.getElementById("hours").innerHTML =
-                String(hours).padStart(2, "0");
-
-
-            document.getElementById("minutes").innerHTML =
-                String(minutes).padStart(2, "0");
-
-
-            document.getElementById("seconds").innerHTML =
-                String(seconds).padStart(2, "0");
-
-
-        }
-
-
-
-
-        showComingSoon();
-
-        update();
-
-        setInterval(update, 1000);
-
-
-    </script>
-
-
+<script src="script.js"></script>
 </body>
-
 </html>
