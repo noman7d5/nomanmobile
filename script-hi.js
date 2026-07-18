@@ -13,7 +13,7 @@
     toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  document.querySelectorAll('.main-nav a').forEach(function(link){
+  document.querySelectorAll('#main-nav a').forEach(function(link){
     link.addEventListener('click', function(){
       header.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');

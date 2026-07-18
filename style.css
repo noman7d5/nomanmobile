@@ -139,6 +139,8 @@ button{ font-family:inherit; }
 .brand-name{ font-family:var(--font-display); font-weight:700; letter-spacing:0.06em; font-size:1.05rem; }
 .brand-sub{ font-size:0.68rem; color:var(--muted); letter-spacing:0.03em; }
 
+.nav-panel{ display:contents; }
+
 .main-nav{ display:flex; gap:28px; }
 .main-nav a{
   font-size:0.92rem;
@@ -149,6 +151,58 @@ button{ font-family:inherit; }
 .main-nav a:hover{ color:var(--text); }
 
 .nav-cta{ margin-left:6px; }
+
+.lang-group{ display:flex; align-items:center; gap:6px; }
+.lang-chip{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height:34px;
+  padding:0 12px;
+  border-radius:999px;
+  border:1.5px solid var(--line);
+  font-family:var(--font-mono);
+  font-size:0.76rem;
+  font-weight:700;
+  color:var(--muted);
+  transition:border-color 0.15s ease, color 0.15s ease;
+  white-space:nowrap;
+}
+.lang-chip:hover{ border-color:var(--teal); color:var(--text); }
+.lang-chip.is-current{
+  color:var(--teal);
+  border-color:var(--teal-dim);
+  background:rgba(45,212,176,0.08);
+}
+
+/* Hindi page: swap in a Devanagari-friendly stack everywhere fonts are referenced */
+html[lang="hi"]{
+  --font-body:    'Noto Sans Devanagari', 'Inter', sans-serif;
+  --font-display: 'Noto Sans Devanagari', 'Space Grotesk', sans-serif;
+  --font-mono:    'Noto Sans Devanagari', 'JetBrains Mono', monospace;
+}
+
+/* Urdu page: Nastaliq needs a distinct stack and more vertical breathing room */
+html[lang="ur"]{
+  --font-body:    'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+  --font-display: 'Noto Nastaliq Urdu', 'Noto Sans Arabic', serif;
+  --font-mono:    'Noto Nastaliq Urdu', 'Noto Sans Arabic', monospace;
+}
+html[lang="ur"] body{ line-height:2.15; }
+html[lang="ur"] h1,
+html[lang="ur"] h2,
+html[lang="ur"] h3{ line-height:2; }
+html[lang="ur"] .eyebrow,
+html[lang="ur"] .section-eyebrow,
+html[lang="ur"] .ticket,
+html[lang="ur"] .btn,
+html[lang="ur"] .cd-label,
+html[lang="ur"] .info-label{ line-height:1.9; }
+
+/* RTL layout fixes — logical-property patches for the few physical values in the sheet */
+html[dir="rtl"] .brand{ margin-right:0; margin-left:auto; }
+html[dir="rtl"] .whatsapp-fab{ right:auto; left:22px; }
+html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
 
 .menu-toggle{
   display:none;
@@ -162,7 +216,13 @@ button{ font-family:inherit; }
   border-radius:8px;
   cursor:pointer;
 }
-.menu-toggle span{ height:2px; width:18px; background:var(--text); margin:0 auto; border-radius:2px; }
+.menu-toggle span{
+  height:2px; width:18px; background:var(--text); margin:0 auto; border-radius:2px;
+  transition:transform 0.28s ease, opacity 0.2s ease;
+}
+.site-header.is-open .menu-toggle span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.site-header.is-open .menu-toggle span:nth-child(2){ opacity:0; }
+.site-header.is-open .menu-toggle span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
 
 /* ---------- hero ---------- */
 .hero{ padding:76px 0 60px; }
@@ -501,24 +561,39 @@ button{ font-family:inherit; }
 }
 
 @media (max-width: 720px){
-  .main-nav, .nav-cta{ display:none; }
-  .menu-toggle{ display:flex; }
-  .site-header.is-open .main-nav{
+  .header-wrap{ flex-wrap:wrap; }
+  .brand{ order:0; }
+  .menu-toggle{ display:flex; order:1; }
+
+  .nav-panel{
+    order:2;
+    flex-basis:100%;
+    width:100%;
     display:flex;
     flex-direction:column;
-    position:absolute;
-    top:100%; left:0; right:0;
-    background:var(--ink-2);
-    padding:20px 24px 26px;
-    border-bottom:1px solid var(--line);
+    align-items:stretch;
     gap:16px;
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transform:translateY(-6px);
+    margin-top:0;
+    transition:max-height 0.35s ease, opacity 0.25s ease, transform 0.3s ease, margin-top 0.3s ease;
   }
-  .site-header.is-open .nav-cta{
-    display:inline-flex;
-    position:absolute;
-    left:24px;
-    top:calc(100% + 226px);
+  .main-nav{ flex-direction:column; gap:4px; }
+  .main-nav a{ padding:10px 2px; border-bottom:1px solid var(--line); }
+  .main-nav a:last-child{ border-bottom:none; }
+  .nav-panel .nav-cta{ width:100%; }
+  .nav-panel .lang-group{ padding-top:14px; border-top:1px solid var(--line); }
+
+  .site-header.is-open .nav-panel{
+    max-height:640px;
+    opacity:1;
+    transform:translateY(0);
+    margin-top:18px;
+    padding-bottom:22px;
   }
+
   .hero{ padding:48px 0 40px; }
   .hero h1{ font-size:2rem; }
   .opening-strip{ flex-direction:column; align-items:flex-start; }

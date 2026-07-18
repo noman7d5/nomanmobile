@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="alternate" hreflang="en" href="index.html">
+<link rel="alternate" hreflang="hi" href="index-hi.html">
 </head>
 <body>
 
@@ -33,16 +35,22 @@
       </span>
     </a>
 
-    <nav class="main-nav" id="main-nav">
-      <a href="#services">Services</a>
-      <a href="#accessories">Accessories</a>
-      <a href="#process">Process</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#location">Location</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-panel" id="main-nav">
+      <nav class="main-nav">
+        <a href="#services">Services</a>
+        <a href="#accessories">Accessories</a>
+        <a href="#process">Process</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book a Repair</a>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Book a Repair</a>
+      <div class="lang-group">
+        <a href="index.html" class="lang-chip is-current" aria-label="View in English">EN</a>
+        <a href="index-hi.html" class="lang-chip" aria-label="हिन्दी में देखें">हिं</a>
+      </div>
+    </div>
 
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span><span></span>
@@ -167,9 +175,8 @@
 
         <article class="card service-card">
           <div class="card-icon" aria-hidden="true">
-            <!-- <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg> -->
-        <img width="25" height="25" src="https://img.icons8.com/material/24/22C3E6/camera--v1.png" alt="camera--v1"/>
-        </div>
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
           <h3>Camera &amp; Lens Repair</h3>
           <p>Blurry shots, focus failure or shattered lens glass — front or rear, fixed and tested.</p>
           <span class="price">From ₹449<sup>*</sup></span>
