@@ -119,3 +119,71 @@ document.getElementById('year').textContent = new Date().getFullYear();
     if(stepIndex === 0) swapJob();
   }, 1800);
 })();
+
+(function () {
+  const SELECTOR = '.btn, .lang-chip, .whatsapp-fab, .social-icon, .menu-toggle';
+  const MAX_DRAG    = 46;   // px of finger travel before the stretch maxes out
+  const MAX_STRETCH = 0.38; // elongation along the drag axis
+  const MAX_SQUEEZE = 0.20; // thinning on the perpendicular axis
+  const FOLLOW      = 0.32; // how far the element glides toward the finger (0-1)
+
+  document.querySelectorAll(SELECTOR).forEach(function (el) {
+    el.classList.add('elastic');
+
+    let startX = 0, startY = 0, dragging = false, raf = null;
+
+    function setTransform(dx, dy) {
+      const dist    = Math.min(Math.hypot(dx, dy), MAX_DRAG);
+      const ratio   = dist / MAX_DRAG;
+      const angle   = Math.atan2(dy, dx);
+      const stretch = 1 + ratio * MAX_STRETCH;
+      const squeeze = 1 - ratio * MAX_SQUEEZE;
+      const tx = dx * FOLLOW;
+      const ty = dy * FOLLOW;
+
+      el.style.transform =
+        'translate(' + tx + 'px, ' + ty + 'px) ' +
+        'rotate(' + angle + 'rad) ' +
+        'scale(' + stretch + ', ' + squeeze + ') ' +
+        'rotate(' + (-angle) + 'rad)';
+    }
+
+    function onMove(e) {
+      if (!dragging) return;
+      const point = e.touches ? e.touches[0] : e;
+      const dx = point.clientX - startX;
+      const dy = point.clientY - startY;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { setTransform(dx, dy); });
+    }
+
+    function onDown(e) {
+      dragging = true;
+      const point = e.touches ? e.touches[0] : e;
+      startX = point.clientX;
+      startY = point.clientY;
+      el.classList.remove('is-releasing');
+      el.classList.add('is-grabbed');
+      el.style.transform = 'scale(0.97)'; // quick tactile press-down
+      window.addEventListener('pointermove', onMove);
+      window.addEventListener('touchmove', onMove, { passive: true });
+    }
+
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      if (raf) cancelAnimationFrame(raf);
+      el.classList.remove('is-grabbed');
+      el.classList.add('is-releasing');
+      el.style.transform = 'translate(0,0) scale(1,1)';
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('touchmove', onMove);
+    }
+
+    el.addEventListener('pointerdown', onDown);
+    el.addEventListener('touchstart', onDown, { passive: true });
+    window.addEventListener('pointerup', onUp);
+    window.addEventListener('touchend', onUp);
+    window.addEventListener('touchcancel', onUp);
+  });
+})();
