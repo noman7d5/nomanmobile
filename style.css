@@ -738,7 +738,10 @@ html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
 
 @media (max-width: 720px){
   .menu-toggle{ display:flex; }
-
+  .header-wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   /* The dropdown itself carries its own background + blur, so it can
      never render without one — and being position:absolute, it never
      forces .header-wrap (or the header's painted background) to grow. */
@@ -785,6 +788,10 @@ html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
 }
 
 @media (max-width: 480px){
+    .header-wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
   .wrap{ padding:0 18px; }
   .services-grid{ grid-template-columns:1fr; }
   .why-grid{ grid-template-columns:1fr; }
