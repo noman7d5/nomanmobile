@@ -738,10 +738,7 @@ html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
 
 @media (max-width: 720px){
   .menu-toggle{ display:flex; }
-  .header-wrap {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
+  
   /* The dropdown itself carries its own background + blur, so it can
      never render without one — and being position:absolute, it never
      forces .header-wrap (or the header's painted background) to grow. */
@@ -785,13 +782,13 @@ html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
   .accessories-grid{ grid-template-columns:repeat(2,1fr); }
   .process-rail{ grid-template-columns:repeat(2,1fr); }
   .trust-wrap{ grid-template-columns:1fr 1fr; }
-}
-
-@media (max-width: 480px){
-    .header-wrap {
+  .header-wrap {
     padding-top: 20px;
     padding-bottom: 20px;
   }
+}
+
+@media (max-width: 480px){
   .wrap{ padding:0 18px; }
   .services-grid{ grid-template-columns:1fr; }
   .why-grid{ grid-template-columns:1fr; }
@@ -801,6 +798,10 @@ html[dir="rtl"] .cd-sep{ transform:translateY(-4px); }
   .cd-num{ font-size:1.05rem; }
   .ticket{ padding:24px 20px 20px; }
   .footer-wrap{ flex-direction:column; }
+    .header-wrap {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 /* Fallback for browsers without backdrop-filter support: solid-ish panels
